@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -13,13 +14,17 @@ public class LightSettingsPlayer : MonoBehaviour
     [SerializeField] PostProcessProfile NightVisionProfile;
     //The GUI overlay used when NightVisionProfile is active
     [SerializeField] GameObject NightVisionOverlay;
+    [SerializeField] GameObject Flashlight;
     
     //NightVisionActive true when toggled on, default false
     private bool NightVisionActive = false;
+    //FlightlightActive true when toggled on, default false
+    private bool FlashlightActive = false;
 
     private void Start()
     {
         NightVisionOverlay.gameObject.SetActive(false);
+        Flashlight.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +34,25 @@ public class LightSettingsPlayer : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.N))
         {
             ToggleNightVision();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            ToggleFlashlight();
+        }
+    }
+
+    private void ToggleFlashlight()
+    {
+        if(!FlashlightActive)
+        {
+            Flashlight.SetActive(true);
+            FlashlightActive = true;
+        }
+        else
+        {
+            Flashlight.SetActive(false);
+            FlashlightActive = false;
         }
     }
 
