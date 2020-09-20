@@ -35,13 +35,17 @@ public class LightSettingsPlayer : MonoBehaviour
         {
             ToggleNightVision();
         }
-
+        // Toggles Flashlight on/off by pressing 'F'
         if(Input.GetKeyDown(KeyCode.F))
         {
             ToggleFlashlight();
         }
     }
 
+    /* 
+     * Toggles Flashlight mode on/off
+     * Default: FlashlightActive is false
+     */
     private void ToggleFlashlight()
     {
         if(!FlashlightActive)
